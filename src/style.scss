@@ -1,7 +1,21 @@
+@mixin min-md {
+	@media not screen and (min-width: 768px) {
+		@content;
+	}
+}
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+}
+
+body {
+	background: #111;
+	color: #fff;
+	font-family: 'Hiragino Kaku Gothic ProN', 'メイリオ', sans-serif;
+	text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
 }
 
 header {
@@ -18,7 +32,10 @@ header {
 }
 
 main {
-	padding: 80px 0;
+	padding: 40px 0;
+	@include min-md {
+		padding: 20px 0;
+	}
 }
 
 footer {
@@ -28,8 +45,87 @@ footer {
 .section {
 	&:not(:first-of-type) {
 		margin-top: 40px;
+		@include min-md {
+			margin-top: 30px;
+		}
 	}
 	h2 {
 		font-size: 24px;
+	}
+}
+
+.about {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 20px;
+	@include min-md {
+		grid-template-columns: 1fr;
+	}
+	&_head {
+		grid-column: 1/3;
+		@include min-md {
+			grid-column: 1/1;
+		}
+	}
+	&_image {
+		max-width: 180px;
+		margin: 20px 0;
+		text-align: center;
+		img {
+			width: 100%;
+			display: block;
+		}
+	}
+	&_caption {
+		margin-top: 10px;
+		font-weight: bold;
+	}
+	&_list {
+		display: grid;
+		max-width: 500px;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 20px;
+		font-size: 15px;
+		@include min-md{
+			gap: 10px;
+		}
+		dt {
+			font-weight: bold;
+			font-size: 1.1em;
+		}
+	}
+}
+
+.box {
+	h3 {
+		border-bottom: 1px #fff solid;
+		padding-bottom: 5px;
+		margin-bottom: 20px;
+	}
+
+	dl,
+	ul {
+		padding: 0 10px;
+	}
+}
+
+.skill {
+	margin-top: 20px;
+	margin-left: 20px;
+	li {
+		font-size: 15px;
+		&:not(:first-of-type) {
+			margin-top: 10px;
+			@include min-md{
+				margin-top: 5px;
+			}
+		}
+	}
+}
+
+.works {
+	list-style: none;
+	h3 {
+		font-size: 18px;
 	}
 }
