@@ -141,7 +141,8 @@ footer {
 		}
 	}
 	li {
-		iframe {
+		iframe,
+		img {
 			aspect-ratio: 16/9;
 			width: 100%;
 		}
